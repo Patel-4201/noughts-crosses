@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Teachers", sans-serif;
+}
+button,
+input {
+  font-family: inherit;
+}
+main {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  display: grid;
+  place-items: center;
+}
+.heading {
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.heading::before {
+  content: "O";
+  color: red;
+  position: absolute;
+  left: -2rem;
+  font-weight: 500;
+}
+.heading::after {
+  content: "X";
+  color: red;
+  position: absolute;
+  right: -2rem;
+  font-weight: 600;
+}
+.player-status {
+  border: 1px solid #333;
+  background: #eee;
+  border-radius: 1rem;
+  padding: 0.5em 3em;
+}
+.current-player {
+  font-weight: 500;
+  color: red;
+}
+
+// game grid
+.game-grid {
+  background: whitesmoke;
+  width: 20rem;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  // neumorphism ui
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 2rem;
+}
+.box {
+  font-size: 3rem;
+  font-weight: 500;
+  border: 1px solid #33333399;
+  display: grid;
+  place-items: center;
+}
+
+.btn-reset {
+  border: 1px solid #333;
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+  border-radius: 1rem;
+  padding: 0.5em 2em;
+  font-weight: 200;
+}
+
+@media screen and (max-width: 450px) {
+  .heading {
+    font-size: 1rem;
+  }
+  .heading::before {
+    left: -1rem;
+  }
+  .heading::after {
+    right: -1rem;
+  }
+  .game-grid {
+    width: 15rem;
+  }
+  .box {
+    font-size: 2rem;
+  }
+}

@@ -4,24 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Noughts & Crosses</title>
+
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teachers:ital,wght@0,400..800;1,400..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- custom style -->
     <link rel="stylesheet" href="assets/scss/main.scss" />
   </head>
   <body>
     <main>
-        <h1>Noughts & Crosses</h1>
-        <p>Player: 0</p>
-        <div class="game-grid">
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-            <div class="box">O</div>
-        </div>
-        <button>New Game</button>
+      <h1 class="heading">Noughts & Crosses</h1>
+      <p class="player-status">Player: <span class="current-player">X</span></p>
+      <div class="game-grid">
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+        <div class="box">O</div>
+      </div>
+      <button class="btn-reset">New Game</button>
     </main>
   </body>
 </html>
