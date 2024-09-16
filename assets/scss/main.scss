@@ -1,4 +1,8 @@
-* {
+@import "utils";
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -73,10 +77,12 @@ main {
 
 .btn-reset {
   border: 1px solid #333;
-  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+  background: linear-gradient(180deg, #2af598 0%, #009efd 100%);
   border-radius: 1rem;
   padding: 0.5em 2em;
   font-weight: 200;
+  cursor: pointer;
+  visibility: hidden;
 }
 
 @media screen and (max-width: 450px) {
