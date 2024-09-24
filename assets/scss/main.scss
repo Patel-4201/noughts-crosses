@@ -9,6 +9,7 @@
 }
 body {
   font-family: "Teachers", sans-serif;
+  user-select: none;
 }
 button,
 input {
@@ -62,7 +63,6 @@ main {
   // neumorphism ui
   background: linear-gradient(145deg, #cacaca, #f0f0f0);
   box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -74,6 +74,7 @@ main {
   border: 1px solid #33333399;
   display: grid;
   place-items: center;
+  cursor: pointer;
 }
 
 .btn-reset {

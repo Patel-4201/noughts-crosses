@@ -75,6 +75,8 @@
 //   return value % 2 == 0;
 // });
 // console.log(x);
+import chances from "./chances";
+//noughts-crosses
 
 const headingEl = document.querySelector(".heading");
 const currentPlayerEl = document.querySelector(".current-player");
@@ -83,27 +85,61 @@ const resetBtn = document.querySelector(".btn-reset");
 
 // ===== Game Variables =====
 const players = ["O", "X"];
-let currPlayer = getPlayers();
+let currPlayer;
+let virtualGrid;
 
-currentPlayerEl.textContent = currPlayer;
 // functions
-function getPlayers() {
+function getPlayer() {
   const rn = Math.floor(Math.random() * 2);
   return players[rn];
 }
 
 function swapPlayer() {
-  currPlayer = currPlayer === "O" ? "X" : "O";
+  const newPlayer = currPlayer === "O" ? "X" : "O";
+  currPlayer = newPlayer;
+  currentPlayerEl.textContent = newPlayer;
 }
 
-function handleClick(input) {
-  input.textContent = currPlayer;
-  swapPlayer();
+// =====Start the game =====
+function startGame() {
+  // current player set the random player
+  console.log("1");
+  currPlayer = getPlayer();
+  virtualGrid = new Array(9).fill("");
   currentPlayerEl.textContent = currPlayer;
 }
-// only the first one
-boxes.forEach(function (box) {
-  box.addEventListener("click", function () {
-    handleClick(box);
+
+function handleBoxClick(input) {
+  if (virtualGrid[input] === "") {
+    console.log(input);
+    // show the current player as text content
+    boxes[input].textContent = currPlayer;
+    // hidden pointer
+    boxes[input].style.cursor = "auto";
+    // addd current player in our virtual grid
+    virtualGrid[input] = currPlayer;
+    console.log(virtualGrid);
+    // check if won
+    checkifWon();
+    //  swap the player
+    swapPlayer();
+  }
+}
+
+console.log(boxes);
+
+boxes.forEach(function (_, index) {
+  _.addEventListener("click", function () {
+    handleBoxClick(index);
   });
 });
+
+function handleReset() {
+  //TODO:
+  alert("hii");
+}
+
+resetBtn.addEventListener("click", handleReset);
+
+// start the game on page load
+document.addEventListener("DOMContentLoaded", startGame);
