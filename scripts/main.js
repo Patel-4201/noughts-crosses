@@ -23,13 +23,45 @@ function swapPlayer() {
   currentPlayerEl.textContent = currPlayer;
 }
 
-// =====Start the game =====
+// ===== Start the game =====
 function startGame() {
   // current player set the random player
   // console.log("1");
   currPlayer = getPlayer();
   virtualGrid = new Array(9).fill("");
   currentPlayerEl.textContent = currPlayer;
+}
+function checkifWon() {
+  chances.forEach((chances) => {
+    // destructure
+    const [c1, c2, c3] = chances;
+    if (
+      virtualGrid[c1] !== "" &&
+      virtualGrid[c1] !== "" &&
+      virtualGrid[c1] !== "" &&
+      virtualGrid[c1] === virtualGrid[c2] &&
+      virtualGrid[c2] === virtualGrid[c1] &&
+      virtualGrid[c3] === virtualGrid[c1]
+    ) {
+      const winner = virtualGrid[c1];
+      headingEl.textContent = `winner: ${winner}`;
+
+      boxes[c1].classList.add("green");
+      boxes[c2].classList.add("green");
+      boxes[c3].classList.add("green");
+
+      boxes.forEach((box) => (box.style.pointerEvents = "none"));
+      resetBtn.classList.toggle("active");
+
+      return;
+    }
+  });
+  const x = virtualGrid.every((e) => e !== "");
+
+  if (x) {
+    headingEl.textContent = "there is a tie!";
+    resetBtn.classList.toggle("active");
+  }
 }
 
 function handleBoxClick(input) {
@@ -66,7 +98,9 @@ function handleReset() {
   // Clear the text content of each box
   boxes.forEach((box) => {
     box.textContent = "";
-    box.style.cursor = "pointer"; // Reset cursor style
+    // Reset cursor style
+    box.style.cursor = "pointer";
+    box.classList.remove("green");
   });
 }
 
