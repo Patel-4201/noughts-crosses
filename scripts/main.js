@@ -44,7 +44,7 @@ function checkifWon() {
       virtualGrid[c3] === virtualGrid[c1]
     ) {
       const winner = virtualGrid[c1];
-      headingEl.textContent = `winner: ${winner}`;
+      headingEl.textContent = `winner is '${winner}'  `;
 
       boxes[c1].classList.add("green");
       boxes[c2].classList.add("green");
@@ -60,20 +60,19 @@ function checkifWon() {
 
   if (x) {
     headingEl.textContent = "there is a tie!";
+    headingEl.style.color = "red";
     resetBtn.classList.toggle("active");
   }
 }
 
 function handleBoxClick(input) {
   if (virtualGrid[input] === "") {
-    console.log(input);
     // show the current player as text content
     boxes[input].textContent = currPlayer;
     // hidden pointer
     boxes[input].style.cursor = "auto";
     // addd current player in our virtual grid
     virtualGrid[input] = currPlayer;
-    console.log(virtualGrid);
     // check if won
     checkifWon();
     //  swap the player
@@ -83,18 +82,19 @@ function handleBoxClick(input) {
 
 // console.log(boxes);
 
-boxes.forEach(function (_, index) {
-  _.addEventListener("click", function () {
+boxes.forEach(function (box, index) {
+  box.addEventListener("click", function () {
     handleBoxClick(index);
   });
 });
 
+function newGame() {
+  handleBoxClick();
+}
+
 function handleReset() {
-  //TODO:
-  // alert("hii");
   // Clear the virtual grid
   virtualGrid = new Array(9).fill("");
-
   // Clear the text content of each box
   boxes.forEach((box) => {
     box.textContent = "";
@@ -102,9 +102,11 @@ function handleReset() {
     box.style.cursor = "pointer";
     box.classList.remove("green");
   });
+  // heading
+  headingEl.classList.add("heading");
 }
 
 resetBtn.addEventListener("click", handleReset);
 
 // start the game on page load
-document.addEventListener("DOMContentLoaded", startGame);
+startGame();

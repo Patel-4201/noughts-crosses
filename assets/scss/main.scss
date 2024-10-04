@@ -1,5 +1,8 @@
 @import "utils";
 
+// google font
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
 *,
 *::before,
 *::after {
@@ -8,7 +11,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Teachers", sans-serif;
+  font-family: "Fredoka", sans-serif;
   user-select: none;
 }
 button,
@@ -45,7 +48,13 @@ main {
 }
 .player-status {
   border: 1px solid #333;
-  background: #eee;
+  background: radial-gradient(
+    circle at 7.5% 24%,
+    rgb(237, 161, 193) 0%,
+    rgb(250, 178, 172) 25.5%,
+    rgb(190, 228, 210) 62.3%,
+    rgb(215, 248, 247) 93.8%
+  );
   border-radius: 1rem;
   padding: 0.5em 3em;
 }
